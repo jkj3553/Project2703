@@ -1,4 +1,4 @@
-##OnSet
+#OnSet
 
 OnSet is a performance-oriented task management system designed to convert complex exam syllabi into structured, daily executable plans. By utilizing a high-contrast, industrial design language, the platform minimizes cognitive load and prioritizes user focus on long-term academic consistency.
 

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onset | Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="home.css">
+</head>
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="header">
+    <div class="logo">
+      <span class="logo-text">ONSET.</span>
+    </div>
+    <div class="header-stats">
+      <!-- Productivity Tile -->
+      <div class="quick-stat stat-mint">
+        <div class="stat-dial">85%</div>
+        <span class="stat-label">Productivity</span>
+      </div>
+      <!-- Progress Tile -->
+      <div class="quick-stat stat-purple" id="progressToggle">
+        <div class="stat-bar-icon">
+          <div class="bar-fill" style="width: 60%;"></div>
+        </div>
+        <span class="stat-label">Progress</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= ACCORDION DRAWER ================= -->
+  <div class="progress-drawer" id="progressDrawer">
+    <div class="drawer-header">SYLLABUS STATUS</div>
+    <div class="drawer-content">
+      <div class="syllabus-item">
+        <span>Mathematics - Algebra</span>
+        <span class="status-done">Completed</span>
+      </div>
+      <div class="syllabus-item">
+        <span>Physics - Kinematics</span>
+        <span class="status-pending">Remaining</span>
+      </div>
+      <div class="syllabus-item">
+        <span>Chemistry - Organic</span>
+        <span class="status-pending">Remaining</span>
+      </div>
+    </div>
+  </div>
+
+  <main class="main-content">
+    
+    <!-- ================= CONSISTENCY TRACKER ================= -->
+    <section class="tracker-section">
+      <div class="brutalist-container tracker-container">
+        <h2 class="section-title">CONSISTENCY TRACKER</h2>
+        <div class="tracker-grid" id="trackerGrid">
+          <!-- JS will populate days -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TASK MANAGEMENT ================= -->
+    <section class="tasks-section">
+      <div class="section-header">
+        <h2 class="section-title">ACTIVE PLANS</h2>
+        <button class="btn btn-primary" id="toggleEmptyBtn">+ TOGGLE EMPTY STATE</button>
+      </div>
+
+      <!-- Empty State -->
+      <div class="empty-state" id="emptyState" style="display: none;">
+        <div class="empty-icon">+</div>
+        <div class="empty-text">CREATE PLANS</div>
+      </div>
+
+      <!-- Active Task Grid -->
+      <div class="task-grid" id="taskGrid">
+        
+        <!-- Task Card 1 -->
+        <div class="brutalist-card task-card card-black">
+          <div class="sticker">URGENT</div>
+          <h3 class="task-title">Mathematics - Algebra</h3>
+          <p class="task-desc">Complete Exercise 4.2 & 4.3</p>
+          <div class="task-actions">
+            <button class="btn btn-green">Complete</button>
+            <button class="btn btn-yellow">Reschedule</button>
+          </div>
+        </div>
+        
+        <!-- Task Card 2 -->
+        <div class="brutalist-card task-card card-black" style="box-shadow: 12px 12px 0px 0px var(--mint); border-color: var(--mint);">
+          <div class="sticker">SOON</div>
+          <h3 class="task-title">Physics - Vectors</h3>
+          <p class="task-desc">Review dot and cross products</p>
+          <div class="task-actions">
+            <button class="btn btn-green">Complete</button>
+            <button class="btn btn-yellow">Reschedule</button>
+          </div>
+        </div>
+
+        <!-- Task Card 3 -->
+        <div class="brutalist-card task-card card-black" style="box-shadow: 12px 12px 0px 0px var(--yellow); border-color: var(--yellow);">
+          <div class="sticker">ON TRACK</div>
+          <h3 class="task-title">Chemistry - Bonding</h3>
+          <p class="task-desc">Read Chapter 5 completely</p>
+          <div class="task-actions">
+            <button class="btn btn-green">Complete</button>
+            <button class="btn btn-yellow">Reschedule</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+  <script src="home.js"></script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+/* =========================================
+   ONSET — login.css
+   Split-screen login specifics
+   ========================================= */
+
+.login-main {
+  min-height: calc(100vh - 120px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+/* Master container matches brutalist design */
+.login-container {
+  display: flex;
+  width: 100%;
+  max-width: 1000px;
+  padding: 0; /* Override generic brutalist padding to let children touch edges */
+  background-color: transparent;
+  border-width: 4px; /* Heavy border */
+  border-color: #fff;
+  box-shadow: 16px 16px 0px 0px var(--shadow-color); /* Bright shadow for dark BG */
+}
+
+/* Two equal columns */
+.login-panel {
+  flex: 1;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Left Panel - Branding (Pastel Yellow) */
+.panel-left {
+  background-color: var(--yellow);
+  color: #000;
+  border-right: 4px solid #000;
+}
+
+.brutalist-hr {
+  border: 0;
+  border-bottom: 8px solid #000;
+  width: 60px;
+  margin: 1.5rem 0;
+}
+
+.panel-subtitle {
+  font-size: 3rem;
+  font-family: serif;
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.1;
+  color: #000;
+  margin-top: 1rem;
+}
+
+.panel-desc {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #333;
+  line-height: 1.5;
+}
+
+.create-account-btn {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+/* Right Panel - Form (Pastel Green) */
+.panel-right {
+  background-color: var(--green);
+  color: #000;
+}
+
+.welcome-text {
+  font-weight: 900;
+  letter-spacing: 2px;
+  font-size: 1rem;
+  color: #000;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.sign-in-title {
+  font-size: 4rem;
+  font-weight: 500;
+  font-family: serif; 
+  font-style: italic;
+  margin-bottom: 2rem;
+  border-bottom: 4px solid #000;
+  display: inline-block;
+  padding-bottom: 0px;
+  line-height: 1;
+}
+
+.btn-google {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background-color: #fff;
+  color: #000;
+  border: 4px solid #000;
+  font-weight: 900;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 900;
+  color: #000;
+}
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 2px solid #000;
+}
+.divider span {
+  padding: 0 1rem;
+  font-size: 1.1rem;
+}
+
+/* Form Styles */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.form-group label {
+  font-weight: 900;
+  font-size: 1.1rem;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  color: #000;
+}
+
+.brutalist-input {
+  font-family: inherit;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 1rem 1.2rem;
+  background-color: #fff;
+  color: #000;
+  border: 4px solid #000;
+  box-shadow: 4px 4px 0px 0px #000;
+  transition: all 0.1s ease-out;
+  border-radius: 0;
+  appearance: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.brutalist-input:focus {
+  outline: none;
+  transform: translate(-3px, -3px);
+  box-shadow: 7px 7px 0px 0px #000;
+}
+
+.action-link {
+  font-weight: 900;
+  color: #000;
+  text-decoration: none;
+  font-size: 1rem;
+  align-self: flex-start;
+  margin-top: -0.5rem;
+}
+
+.action-link:hover {
+  text-decoration: underline;
+}
+
+.signin-btn {
+  width: 100%;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.error-msg {
+  display: none;
+  background-color: #fff;
+  color: #d32f2f;
+  font-weight: 900;
+  border: 4px solid #d32f2f;
+  box-shadow: 6px 6px 0px 0px #d32f2f;
+  padding: 1rem;
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.btn-black {
+  background-color: #000;
+  color: #fff;
+  border-color: #000;
+  box-shadow: 6px 6px 0px 0px #fff;
+}
+
+/* Base button overrides for black styles */
+.btn-black {
+  background: transparent;  /* Override base */
+  background-color: #000;
+}
+.btn-black:hover {
+  box-shadow: 8px 8px 0px 0px #fff;
+}
+
+
+@media (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+  }
+  .panel-left {
+    border-right: none;
+    border-bottom: 4px solid #000;
+    padding: 2.5rem;
+  }
+  .panel-right {
+    padding: 2.5rem;
+  }
+  .create-account-btn {
+    margin-top: 3rem;
+  }
+}

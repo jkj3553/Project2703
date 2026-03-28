@@ -39,7 +39,7 @@
 .btn-rebalance {
   padding: 1rem 2.5rem;
   font-size: 1.2rem;
-  box-shadow: 6px 6px 0px 0px #000;
+  box-shadow: 6px 6px 0px 0px var(--shadow-color);
 }
 
 .btn-black {
@@ -54,8 +54,8 @@
 /* Table Container constraints */
 .table-container {
   padding: 0;
-  border-color: #000;
-  box-shadow: 12px 12px 0px 0px #000;
+  border-color: #fff;
+  box-shadow: 12px 12px 0px 0px var(--shadow-color);
 }
 
 .brutalist-table {
@@ -156,9 +156,9 @@
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  border: 4px solid #000;
+  border: 4px solid #fff;
   padding: 2.5rem;
-  box-shadow: 10px 10px 0px 0px #000;
+  box-shadow: 10px 10px 0px 0px var(--shadow-color);
 }
 
 .progress-stat.stat-mint { background-color: var(--green); }
@@ -184,8 +184,8 @@
 .guide-section {
   background-color: #fff;
   color: #000;
-  border: 4px solid #000;
-  box-shadow: 12px 12px 0px 0px #000;
+  border: 4px solid var(--yellow);
+  box-shadow: 12px 12px 0px 0px var(--yellow);
   padding: 3rem;
 }
 

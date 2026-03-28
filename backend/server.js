@@ -71,7 +71,7 @@ app.post('/generate-plan', async (req, res) => {
 
   } catch (error) {
     console.error('Error generating plan:', error);
-    res.status(500).json({ error: 'Failed to generate plan. Please check your API key.' });
+    res.status(500).json({ error: `OpenAI Error: ${error.message}` });
   }
 });
 

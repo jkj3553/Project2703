@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onset | Execution Plan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="plan.css">
+</head>
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="header">
+    <div class="logo">
+      <span class="logo-text">ONSET.</span>
+    </div>
+    <div class="header-actions">
+      <button class="btn btn-black" onclick="window.location.href='home.html'">Back to Dashboard</button>
+    </div>
+  </header>
+
+  <main class="main-content plan-main">
+    
+    <!-- ================= PLAN HEADER ================= -->
+    <div class="plan-header-section">
+      <div class="title-container">
+        <h1 class="mega-title plan-title">YOUR EXECUTION PLAN</h1>
+        <p class="plan-subtitle">Follow this daily. Adjust only if needed.</p>
+      </div>
+      <div class="actions-container">
+        <button class="btn btn-yellow btn-rebalance">REBALANCE PLAN</button>
+      </div>
+    </div>
+
+    <!-- ================= TO-DO TABLE ================= -->
+    <div class="brutalist-card card-black table-container">
+      <div style="overflow-x: auto;">
+        <table class="brutalist-table" id="planTable">
+          <thead>
+            <tr>
+              <th class="col-date">DATE</th>
+              <th class="col-task">TASK</th>
+              <th class="col-done" style="text-align: center;">DONE</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Apr 14</td>
+              <td>Complete Mathematics Algebra Modules 1 & 2</td>
+              <td style="text-align: center;"><input type="checkbox" class="brutalist-checkbox"></td>
+            </tr>
+            <tr>
+              <td>Apr 15</td>
+              <td>Physics: Solve 50 mechanics problems</td>
+              <td style="text-align: center;"><input type="checkbox" class="brutalist-checkbox"></td>
+            </tr>
+            <tr>
+              <td>Apr 16</td>
+              <td>Review weak areas in Organic Chemistry</td>
+              <td style="text-align: center;"><input type="checkbox" class="brutalist-checkbox"></td>
+            </tr>
+            <tr>
+              <td>Apr 17</td>
+              <td>Take Full-Length Practice Exam #1</td>
+              <td style="text-align: center;"><input type="checkbox" class="brutalist-checkbox"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ================= PROGRESS SECTION ================= -->
+    <div class="progress-section">
+      <div class="progress-stat stat-mint">
+        <span class="stat-value" id="productivityScore">0%</span>
+        <span class="stat-label">Productivity</span>
+      </div>
+      <div class="progress-stat stat-purple">
+        <span class="stat-value" id="streakScore">0 Days</span>
+        <span class="stat-label">Streak</span>
+      </div>
+    </div>
+
+    <!-- ================= AI GUIDE ================= -->
+    <div class="brutalist-card card-mint guide-section">
+      <h2 class="guide-title">EXECUTION GUIDE</h2>
+      <ul class="guide-list">
+        <li>Check off tasks only when 100% complete. Partial work equals zero.</li>
+        <li>If you miss a day, do not try to double up. Click "Rebalance Plan".</li>
+        <li>Review your execution strictly at 9 PM daily.</li>
+      </ul>
+    </div>
+
+  </main>
+
+  <!-- Load Global and Specific Interactions -->
+  <script src="script.js"></script>
+  <script src="plan.js"></script>
+</body>
+</html>

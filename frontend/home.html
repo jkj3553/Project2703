@@ -57,9 +57,17 @@
     <!-- ================= CONSISTENCY TRACKER ================= -->
     <section class="tracker-section">
       <div class="brutalist-container tracker-container">
-        <h2 class="section-title">CONSISTENCY TRACKER</h2>
-        <div class="tracker-grid" id="trackerGrid">
-          <!-- JS will populate days -->
+        <div class="tracker-header">
+          <h2 class="section-title" style="margin-bottom: 0;">CONSISTENCY TRACKER</h2>
+          <div class="calendar-controls">
+            <button class="btn" id="prevMonthBtn">←</button>
+            <h3 class="current-month" id="currentMonthDisplay">March 2026</h3>
+            <button class="btn" id="nextMonthBtn">→</button>
+          </div>
+        </div>
+        
+        <div class="calendar-strip" id="calendarDaysGrid">
+          <!-- JS will populate calendar days horizontally -->
         </div>
       </div>
     </section>
@@ -81,35 +89,56 @@
       <div class="task-grid" id="taskGrid">
         
         <!-- Task Card 1 -->
-        <div class="brutalist-card task-card card-black">
+        <div class="brutalist-card task-card card-mint">
           <div class="sticker">URGENT</div>
-          <h3 class="task-title">Mathematics - Algebra</h3>
-          <p class="task-desc">Complete Exercise 4.2 & 4.3</p>
+          <h3 class="task-title">JEE Advanced - Mathematics</h3>
+          <p class="task-desc">Finish by May 15, 2026</p>
+          
+          <div class="plan-progress">
+            <div class="health-bar-container">
+              <div class="health-bar-fill" style="width: 85%;"></div>
+            </div>
+            <span class="health-text">85% Completed</span>
+          </div>
+
           <div class="task-actions">
-            <button class="btn btn-green">Complete</button>
             <button class="btn btn-yellow">Reschedule</button>
           </div>
         </div>
         
         <!-- Task Card 2 -->
-        <div class="brutalist-card task-card card-black" style="box-shadow: 12px 12px 0px 0px var(--mint); border-color: var(--mint);">
+        <div class="brutalist-card task-card card-purple">
           <div class="sticker">SOON</div>
-          <h3 class="task-title">Physics - Vectors</h3>
-          <p class="task-desc">Review dot and cross products</p>
+          <h3 class="task-title">NEET Biology Module</h3>
+          <p class="task-desc">Finish by April 30, 2026</p>
+          
+          <div class="plan-progress">
+            <div class="health-bar-container">
+              <div class="health-bar-fill" style="width: 45%;"></div>
+            </div>
+            <span class="health-text">45% Completed</span>
+          </div>
+
           <div class="task-actions">
-            <button class="btn btn-green">Complete</button>
             <button class="btn btn-yellow">Reschedule</button>
           </div>
         </div>
 
         <!-- Task Card 3 -->
-        <div class="brutalist-card task-card card-black" style="box-shadow: 12px 12px 0px 0px var(--yellow); border-color: var(--yellow);">
+        <div class="brutalist-card task-card card-yellow">
           <div class="sticker">ON TRACK</div>
-          <h3 class="task-title">Chemistry - Bonding</h3>
-          <p class="task-desc">Read Chapter 5 completely</p>
+          <h3 class="task-title">UPSC Prelims - History</h3>
+          <p class="task-desc">Finish by June 10, 2026</p>
+          
+          <div class="plan-progress">
+            <div class="health-bar-container">
+              <div class="health-bar-fill" style="width: 15%;"></div>
+            </div>
+            <span class="health-text">15% Completed</span>
+          </div>
+
           <div class="task-actions">
-            <button class="btn btn-green">Complete</button>
-            <button class="btn btn-yellow">Reschedule</button>
+            <button class="btn">Reschedule</button>
           </div>
         </div>
 

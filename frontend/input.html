@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onset | Initialize Plan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="input.css">
+</head>
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <header class="header">
+    <div class="logo">
+      <span class="logo-text">ONSET.</span>
+    </div>
+    <div class="header-actions">
+      <button class="btn btn-black" onclick="window.location.href='home.html'">Cancel</button>
+    </div>
+  </header>
+
+  <!-- ================= FORM SECTION ================= -->
+  <main class="main-content input-main">
+    <div class="brutalist-card input-card">
+      <h1 class="mega-title" style="font-size: 3.5rem; margin-bottom: 0.5rem;">INITIALIZE PLAN</h1>
+      <p class="mega-subtitle" style="font-size: 1.2rem; margin-bottom: 2.5rem; color: #333;">Feed the AI your target. No clutter, just execution parameters.</p>
+      
+      <form class="onset-form" id="planForm" onsubmit="event.preventDefault(); window.location.href='home.html';">
+        
+        <div class="form-group">
+          <label for="examName">Target Exam / Goal</label>
+          <input type="text" id="examName" class="brutalist-input" placeholder="e.g. JEE Advanced 2026, AWS Cert" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group" style="flex: 1;">
+            <label for="examDate">Exam Date</label>
+            <input type="date" id="examDate" class="brutalist-input" required>
+          </div>
+          
+          <div class="form-group" style="flex: 1;">
+            <label for="studyLevel">Study Consistency</label>
+            <select id="studyLevel" class="brutalist-input" required>
+              <option value="" disabled selected>Select level...</option>
+              <option value="inconsistent">Inconsistent (rarely studies, struggles to stay regular)</option>
+              <option value="somewhat_consistent">Somewhat Consistent (studies occasionally but not daily)</option>
+              <option value="highly_consistent">Highly Consistent (studies regularly and disciplined)</option>
+            </select>
+            <span class="helper-text">Be honest. This helps the AI adjust workload intensity.</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="weakAreas">Weak Areas</label>
+          <input type="text" id="weakAreas" class="brutalist-input" placeholder="e.g. Organic Chemistry, Calculus, Memorization" required>
+        </div>
+
+        <div class="form-group">
+          <label for="situation">Describe your situation <span style="color: #666; font-size: 0.9em;">(Optional)</span></label>
+          <textarea id="situation" class="brutalist-input" rows="3" placeholder="I have a 3-month backlog, stressing over physics, need a rigid schedule..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-massive" style="width: 100%; margin-top: 1rem; justify-content: center; background-color: #fff;">
+          GENERATE PLAN →
+        </button>
+      </form>
+
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

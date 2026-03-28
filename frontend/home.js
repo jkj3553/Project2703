@@ -15,25 +15,76 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 2. Generate Consistency Tracker Heatmap
-  const trackerGrid = document.getElementById('trackerGrid');
-  if (trackerGrid) {
-    const totalDays = 52 * 7 - 4; // Approx 1 year to fit nicely
-    for (let i = 0; i < totalDays; i++) {
-        const day = document.createElement('div');
-        day.classList.add('tracker-day');
-        
-        // Randomly assign activity for visual demo
-        const rand = Math.random();
-        if (rand > 0.90) {
-            day.classList.add('active-high');
-        } else if (rand > 0.75) {
-            day.classList.add('active-med');
-        } else if (rand > 0.60) {
-            day.classList.add('active-low');
-        }
+  // 2. Generate Consistency Tracker Heatmap -> Horizontal Strip
+  const calendarDaysGrid = document.getElementById('calendarDaysGrid');
+  if (calendarDaysGrid) {
+    let currentDate = new Date();
+    const dayNames = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 
-        trackerGrid.appendChild(day);
+    function renderCalendar(date) {
+      const year = date.getFullYear();
+      const month = date.getMonth();
+      
+      const monthDisplay = document.getElementById('currentMonthDisplay');
+      if (monthDisplay) {
+        monthDisplay.textContent = date.toLocaleString('default', { month: 'long', year: 'numeric' });
+      }
+      
+      calendarDaysGrid.innerHTML = '';
+      
+      const lastDay = new Date(year, month + 1, 0).getDate();
+      
+      // Actual days
+      for(let i=1; i <= lastDay; i++) {
+          const current = new Date(year, month, i);
+          const dayNameStr = dayNames[current.getDay()];
+
+          const col = document.createElement('div');
+          col.className = 'cal-day-col';
+
+          const weekdayLabel = document.createElement('div');
+          weekdayLabel.className = 'cal-weekday-label';
+          weekdayLabel.textContent = dayNameStr;
+
+          const dayBox = document.createElement('div');
+          dayBox.className = 'cal-day-box';
+          dayBox.textContent = i;
+          
+          // Randomly assign activity for visual demo
+          const rand = Math.random();
+          if (rand > 0.85) {
+              dayBox.classList.add('active-high');
+          } else if (rand > 0.75) {
+              dayBox.classList.add('active-med');
+          } else if (rand > 0.60) {
+              dayBox.classList.add('active-low');
+          }
+          
+          col.appendChild(weekdayLabel);
+          col.appendChild(dayBox);
+          calendarDaysGrid.appendChild(col);
+      }
+    }
+
+    // Initialize calendar
+    renderCalendar(currentDate);
+
+    // Event listeners for month toggles
+    const prevMonthBtn = document.getElementById('prevMonthBtn');
+    const nextMonthBtn = document.getElementById('nextMonthBtn');
+
+    if (prevMonthBtn) {
+      prevMonthBtn.addEventListener('click', () => {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        renderCalendar(currentDate);
+      });
+    }
+
+    if (nextMonthBtn) {
+      nextMonthBtn.addEventListener('click', () => {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        renderCalendar(currentDate);
+      });
     }
   }
 

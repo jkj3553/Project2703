@@ -15,9 +15,9 @@
   width: 100%;
   max-width: 850px;
   /* Expanded outer box to give more horizontal breathing room */
-  background-color: #000;
-  border-color: var(--mint);
-  box-shadow: 14px 14px 0px 0px var(--mint);
+  background-color: #80EF80;
+  border: var(--border-width) solid var(--border-color);
+  box-shadow: 14px 14px 0px 0px #fff;
   padding: 3.5rem;
 }
 
@@ -45,7 +45,7 @@
   font-size: 1.1rem;
   letter-spacing: -0.5px;
   text-transform: uppercase;
-  color: #fff;
+  color: #000;
 }
 
 .brutalist-input {
@@ -97,26 +97,26 @@ textarea.brutalist-input {
 
 .helper-text {
   font-size: 0.9rem;
-  color: #aaa;
-  font-weight: 500;
+  color: #333;
+  font-weight: 700;
 }
 
 .btn-black {
   background-color: transparent;
-  color: #fff;
-  border-color: #fff;
-  box-shadow: 4px 4px 0px 0px #fff;
+  color: #000;
+  border-color: #000;
+  box-shadow: 4px 4px 0px 0px #000;
 }
 
 .btn-black:hover {
-  box-shadow: 6px 6px 0px 0px #fff;
+  box-shadow: 6px 6px 0px 0px #000;
 }
 
 /* Mobile responsive adjustments */
 @media (max-width: 768px) {
   .input-card {
     padding: 2.5rem 1.5rem;
-    box-shadow: 8px 8px 0px 0px var(--mint);
+    box-shadow: 8px 8px 0px 0px #fff;
   }
 
   .form-row {

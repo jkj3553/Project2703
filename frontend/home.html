@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Onset | Dashboard</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700;900&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="home.css">
 </head>
+
 <body>
 
   <!-- ================= HEADER ================= -->
@@ -53,7 +56,7 @@
   </div>
 
   <main class="main-content">
-    
+
     <!-- ================= CONSISTENCY TRACKER ================= -->
     <section class="tracker-section">
       <div class="brutalist-container tracker-container">
@@ -65,7 +68,7 @@
             <button class="btn" id="nextMonthBtn">→</button>
           </div>
         </div>
-        
+
         <div class="calendar-strip" id="calendarDaysGrid">
           <!-- JS will populate calendar days horizontally -->
         </div>
@@ -76,72 +79,19 @@
     <section class="tasks-section">
       <div class="section-header">
         <h2 class="section-title">ACTIVE PLANS</h2>
-        <button class="btn btn-primary" id="toggleEmptyBtn">+ TOGGLE EMPTY STATE</button>
+        <button class="btn btn-primary" onclick="window.location.href='input.html'">+ NEW PLAN</button>
       </div>
 
       <!-- Empty State -->
-      <div class="empty-state" id="emptyState" style="display: none;">
+      <div class="empty-state" id="emptyStateContainer" style="display: none;">
         <div class="empty-icon">+</div>
-        <div class="empty-text">CREATE PLANS</div>
+        <div class="empty-text">NO ACTIVE PLANS</div>
+        <p style="margin-top: 1rem; color: #888;">Create a plan to launch execution protocols.</p>
+        <button class="btn btn-black" onclick="window.location.href='input.html'" style="margin-top: 2rem;">CREATE PLAN</button>
       </div>
 
       <!-- Active Task Grid -->
-      <div class="task-grid" id="taskGrid">
-        
-        <!-- Task Card 1 -->
-        <div class="brutalist-card task-card card-mint">
-          <div class="sticker">URGENT</div>
-          <h3 class="task-title">JEE Advanced - Mathematics</h3>
-          <p class="task-desc">Finish by May 15, 2026</p>
-          
-          <div class="plan-progress">
-            <div class="health-bar-container">
-              <div class="health-bar-fill" style="width: 85%;"></div>
-            </div>
-            <span class="health-text">85% Completed</span>
-          </div>
-
-          <div class="task-actions">
-            <button class="btn btn-yellow">Reschedule</button>
-          </div>
-        </div>
-        
-        <!-- Task Card 2 -->
-        <div class="brutalist-card task-card card-purple">
-          <div class="sticker">SOON</div>
-          <h3 class="task-title">NEET Biology Module</h3>
-          <p class="task-desc">Finish by April 30, 2026</p>
-          
-          <div class="plan-progress">
-            <div class="health-bar-container">
-              <div class="health-bar-fill" style="width: 45%;"></div>
-            </div>
-            <span class="health-text">45% Completed</span>
-          </div>
-
-          <div class="task-actions">
-            <button class="btn btn-yellow">Reschedule</button>
-          </div>
-        </div>
-
-        <!-- Task Card 3 -->
-        <div class="brutalist-card task-card card-yellow">
-          <div class="sticker">ON TRACK</div>
-          <h3 class="task-title">UPSC Prelims - History</h3>
-          <p class="task-desc">Finish by June 10, 2026</p>
-          
-          <div class="plan-progress">
-            <div class="health-bar-container">
-              <div class="health-bar-fill" style="width: 15%;"></div>
-            </div>
-            <span class="health-text">15% Completed</span>
-          </div>
-
-          <div class="task-actions">
-            <button class="btn">Reschedule</button>
-          </div>
-        </div>
-
+      <div class="task-grid" id="taskGrid" style="display: none;">
       </div>
     </section>
 
@@ -150,4 +100,5 @@
   <script src="script.js"></script>
   <script src="home.js"></script>
 </body>
+
 </html>

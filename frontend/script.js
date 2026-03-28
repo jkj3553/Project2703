@@ -46,4 +46,39 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   });
 
+  // 2. Auth Protection Logic
+  const path = window.location.pathname;
+  if (!path.includes('login.html') && !path.includes('index.html') && !path.endsWith('/')) {
+    const user = localStorage.getItem('onset_user');
+    if (!user) {
+      window.location.href = 'login.html';
+    }
+  }
+
+  // 3. Logout Handlers
+  const logoutBtns = document.querySelectorAll('.logout-btn');
+  logoutBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      localStorage.removeItem('onset_user');
+      window.location.href = 'index.html';
+    });
+  });
 });
+
+// Global App State Wrapper
+window.OnsetApp = {
+  getPlans: function() {
+    return JSON.parse(localStorage.getItem('onset_plans')) || [];
+  },
+  savePlans: function(plans) {
+    localStorage.setItem('onset_plans', JSON.stringify(plans));
+  },
+  getPlanById: function(id) {
+    return this.getPlans().find(p => p.id === id.toString());
+  },
+  deletePlan: function(id) {
+    const plans = this.getPlans().filter(p => p.id !== id.toString());
+    this.savePlans(plans);
+  }
+};

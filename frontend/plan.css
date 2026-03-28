@@ -75,7 +75,7 @@
 }
 
 .brutalist-table th {
-  background-color: #fff;
+  background-color: var(--mint);
   color: #000;
   font-weight: 900;
   text-transform: uppercase;
@@ -156,7 +156,7 @@
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  border: 4px solid #fff;
+  border: 4px solid var(--border-color);
   padding: 2.5rem;
   box-shadow: 10px 10px 0px 0px var(--shadow-color);
 }
@@ -182,10 +182,10 @@
 
 /* Execution AI Guide */
 .guide-section {
-  background-color: #fff;
+  background-color: var(--purple);
   color: #000;
-  border: 4px solid var(--yellow);
-  box-shadow: 12px 12px 0px 0px var(--yellow);
+  border: 4px solid var(--border-color);
+  box-shadow: 12px 12px 0px 0px var(--shadow-color);
   padding: 3rem;
 }
 

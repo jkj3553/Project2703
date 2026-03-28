@@ -4,6 +4,10 @@
    ========================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
+  // If already logged in, redirect away
+  if (localStorage.getItem('onset_user')) {
+    window.location.href = 'home.html';
+  }
 
   const loginForm = document.getElementById('loginForm');
   const errorMsg = document.getElementById('errorMsg');
@@ -13,24 +17,20 @@ document.addEventListener('DOMContentLoaded', () => {
   loginForm.addEventListener('submit', (e) => {
     e.preventDefault();
     
-    // Hide error initially
     errorMsg.style.display = 'none';
     
     const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
 
-    // Verification Mock
+    // Specific auth requirement from user logic
     if (email === 'testuser@testing.com' && password === 'iamtesting01') {
-      // Success - Redirect
+      localStorage.setItem('onset_user', JSON.stringify({ email: email }));
       window.location.href = 'home.html';
     } else {
-      // Failure - Show alert
       errorMsg.style.display = 'block';
-      // Apply a brutalist shake effect manually
-      errorMsg.style.transform = 'translate(-3px, -3px)';
-      setTimeout(() => errorMsg.style.transform = 'translate(3px, 3px)', 50);
+      errorMsg.style.transform = 'translate(-4px, -4px)';
+      setTimeout(() => errorMsg.style.transform = 'translate(4px, 4px)', 50);
       setTimeout(() => errorMsg.style.transform = 'translate(0px, 0px)', 100);
     }
   });
-
 });

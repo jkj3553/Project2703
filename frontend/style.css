@@ -4,11 +4,11 @@
    ========================================= */
 
 :root {
-  --bg-color: #0b0c10;
-  --text-primary: #fff;
+  --bg-color: #f4f1ea;
+  --text-primary: #000;
   --text-secondary: #000;
   
-  --border-color: #fff;
+  --border-color: #000;
   --border-width: 4px;
   
   /* Brutalist Pastel Accents */
@@ -18,8 +18,8 @@
   --pink: #ff79c6;
   --green: #50fa7b;
 
-  --shadow-color: rgba(255, 255, 255, 0.5);
-  --shadow-hover: rgba(255, 255, 255, 0.9);
+  --shadow-color: #000;
+  --shadow-hover: #000;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -192,11 +192,11 @@ body {
   background-color: #000;
   color: #fff;
   font-weight: 900;
-  border: 3px solid #fff;
+  border: 3px solid var(--border-color);
   padding: 0.5rem 1rem;
   font-size: 1.2rem;
   transform: rotate(10deg);
-  box-shadow: 4px 4px 0px 0px #fff;
+  box-shadow: 4px 4px 0px 0px var(--shadow-color);
 }
 
 /* ================= MARQUEE ================= */

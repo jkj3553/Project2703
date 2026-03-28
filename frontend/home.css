@@ -131,8 +131,9 @@
 
 /* Consistency Tracker (Horizontal Strip View) */
 .brutalist-container {
-  border: var(--border-width) solid #fff;
-  padding: 3rem; /* Generic brutalist padding */
+  border: var(--border-width) solid var(--border-color);
+  padding: 3rem;
+  /* Generic brutalist padding */
   background-color: var(--bg-color);
   box-shadow: 10px 10px 0px 0px var(--shadow-color);
   margin-bottom: 2rem;
@@ -140,8 +141,8 @@
 
 /* Wide container covering the screen horizontally */
 .tracker-container {
-  max-width: 100%; 
-  padding: 2.5rem; 
+  max-width: 100%;
+  padding: 2.5rem;
   margin-bottom: 3rem;
 }
 
@@ -186,10 +187,11 @@
 }
 
 .calendar-strip {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  padding-bottom: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1rem;
+  max-width: fit-content;
+  margin: 0 auto;
 }
 
 .cal-day-col {
@@ -197,7 +199,8 @@
   flex-direction: column;
   align-items: center;
   gap: 0.8rem;
-  min-width: 60px; /* Force minimum width to prevent squishing */
+  min-width: 60px;
+  /* Force minimum width to prevent squishing */
 }
 
 .cal-weekday-label {
@@ -211,7 +214,7 @@
 .cal-day-box {
   width: 60px;
   height: 60px;
-  border: 4px solid #fff; 
+  border: 4px solid var(--border-color);
   background-color: var(--bg-color);
   display: flex;
   align-items: center;
@@ -228,9 +231,22 @@
   z-index: 2;
 }
 
-.cal-day-box.active-low { background-color: rgba(80, 250, 123, 0.4); border-color: #fff; }
-.cal-day-box.active-med { background-color: var(--green); border-color: #000; color: #000; }
-.cal-day-box.active-high { background-color: var(--mint); border-color: #000; color: #000; }
+.cal-day-box.active-low {
+  background-color: rgba(80, 250, 123, 0.4);
+  border-color: #fff;
+}
+
+.cal-day-box.active-med {
+  background-color: var(--green);
+  border-color: #000;
+  color: #000;
+}
+
+.cal-day-box.active-high {
+  background-color: var(--mint);
+  border-color: #000;
+  color: #000;
+}
 
 /* Task Section */
 .section-header {
@@ -246,7 +262,7 @@
 
 /* Empty State */
 .empty-state {
-  border: 4px dashed #fff;
+  border: 4px dashed var(--border-color);
   padding: 6rem;
   text-align: center;
   cursor: pointer;
@@ -276,8 +292,9 @@
 /* Active Task Grid */
 .task-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-  gap: 4rem;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 3rem;
+  align-items: start;
 }
 
 .task-card {

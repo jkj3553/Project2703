@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const planData = {
@@ -33,33 +33,92 @@ document.addEventListener('DOMContentLoaded', () => {
       situation: document.getElementById('situation').value.trim()
     };
 
-    // If it's a new plan, dynamically generate 5 mock tasks starting from today covering the subject
-    let tasks = [];
-    if (editId) {
-      const existing = window.OnsetApp.getPlanById(editId);
-      tasks = existing ? existing.tasks : generateTasks(planData);
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Generating UI...';
+    submitBtn.disabled = true;
+
+    try {
+      const examDateObj = new Date(planData.examDate);
+      const diffDays = Math.ceil((examDateObj - new Date()) / (1000 * 60 * 60 * 24));
+      const days = diffDays > 0 ? diffDays : 7;
+
+      const response = await fetch('http://localhost:3000/generate-plan', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          exam: planData.examName,
+          days: days,
+          topics: planData.weakAreas || 'General Review',
+          level: planData.level,
+          extra: planData.situation || ''
+        })
+      });
+
+      if (!response.ok) {
+        let errMessage = 'Backend AI generation failed.';
+        try {
+           const errData = await response.json();
+           if (errData.error) errMessage = errData.error;
+        } catch(e) {}
+        throw new Error(errMessage);
+      }
       
-      // If we are regenerating entirely, we could overwrite tasks. 
-      // User says "same name target exam means editing" but ID is safer.
-      // For now we keep old tasks when just editing details, or replace them. Let's keep existing.
-    } else {
-      tasks = generateTasks(planData);
+      const data = await response.json();
+      const aiText = data.plan || '';
+
+      // Parse the plain-text AI plan into the {date, desc, done} structure expected by plan.html
+      const aiLines = aiText.split('\n').filter(line => line.trim().length > 4);
+      
+      let tasks = [];
+      const today = new Date();
+      
+      aiLines.forEach((line, i) => {
+        let d = new Date(today);
+        // Distribute tasks roughly across the days
+        d.setDate(d.getDate() + Math.min(i, days - 1)); 
+        
+        let cleanedDesc = line.replace(/^- /, '').replace(/^\d+\.\s/, '').trim();
+        if (cleanedDesc.length > 0) {
+           tasks.push({
+             date: d.toISOString().split('T')[0],
+             desc: cleanedDesc,
+             done: false
+           });
+        }
+      });
+
+      // Ensure the exam Date itself always has a final marker
+      if (planData.examDate) {
+          tasks.push({
+              date: planData.examDate,
+              desc: `ACE THE EXAM: ${planData.examName}`,
+              done: false
+          });
+      }
+
+      planData.tasks = tasks;
+
+      const plans = window.OnsetApp.getPlans();
+      if (editId) {
+        const index = plans.findIndex(p => p.id === editId);
+        if (index !== -1) plans[index] = planData;
+      } else {
+        plans.push(planData);
+      }
+
+      window.OnsetApp.savePlans(plans);
+
+      // Redirect to plan execution view
+      window.location.href = `plan.html?id=${planData.id}`;
+
+    } catch (err) {
+      console.error(err);
+      alert('Error: ' + err.message + '\n\n(If it says "Failed to fetch", ensure the backend is running on port 3000.)');
+    } finally {
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
     }
-    
-    planData.tasks = tasks;
-
-    const plans = window.OnsetApp.getPlans();
-    if (editId) {
-      const index = plans.findIndex(p => p.id === editId);
-      if (index !== -1) plans[index] = planData;
-    } else {
-      plans.push(planData);
-    }
-
-    window.OnsetApp.savePlans(plans);
-
-    // Redirect to plan execution view
-    window.location.href = `plan.html?id=${planData.id}`;
   });
   
   function generateTasks(planData) {

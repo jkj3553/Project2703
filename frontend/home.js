@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const baseRot = Math.random() > 0.5 ? 5 : -5;
 
         const cardHTML = `
-          <div class="brutalist-card task-card ${cardColorMatch}" onclick="window.location.href='plan.html?id=${plan.id}'" style="cursor: pointer;">
+          <div class="brutalist-card task-card ${cardColorMatch}" onclick="localStorage.setItem('onset_active_plan_id', '${plan.id}'); window.location.href='plan.html?id=${plan.id}'" style="cursor: pointer;">
             <div class="sticker dynamic-sticker" data-base-rot="${baseRot}" style="transform: rotate(${baseRot}deg)">${tagText}</div>
             <h3 class="task-title">${plan.examName}</h3>
             <p class="task-desc">Finish by ${plan.examDate || 'TBD'}</p>
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
 
             <div class="task-actions">
-               <button class="btn btn-yellow" onclick="event.stopPropagation(); window.location.href='input.html?editId=${plan.id}'">Rebalance</button>
+               <button class="btn btn-yellow" onclick="event.stopPropagation(); localStorage.setItem('onset_edit_plan_id', '${plan.id}'); window.location.href='input.html?editId=${plan.id}'">Rebalance</button>
             </div>
           </div>
         `;

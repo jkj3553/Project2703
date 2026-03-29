@@ -1,0 +1,152 @@
+{
+  "subject": "Operating Systems",
+  "topics": [
+    {
+      "name": "Process Scheduling",
+      "importance": "high",
+      "weightage": "18-22%",
+      "priority": 1,
+      "summary": "Determines the order in which processes get CPU time. Key algorithms (FCFS, SJF, RR, Priority) are frequently tested through Gantt chart numericals.",
+      "strategy": "Memorize all scheduling algorithms with Gantt chart examples and compare criteria like CPU utilization, throughput, and waiting time.",
+      "key_points": [
+        "FCFS, SJF, Round Robin, Priority Scheduling",
+        "Preemptive vs Non-preemptive",
+        "Scheduling criteria: CPU utilization, throughput, turnaround time",
+        "Multilevel Queue and Feedback Queue",
+        "Real-Time CPU Scheduling",
+        "Thread Scheduling"
+      ]
+    },
+    {
+      "name": "Process Synchronization, Critical Section & Deadlocks",
+      "importance": "high",
+      "weightage": "20-25%",
+      "priority": 2,
+      "summary": "Covers safe access to shared resources via synchronization tools, and deadlock situations where processes are indefinitely blocked. Both are heavily tested with theory and numericals.",
+      "strategy": "Understand critical section requirements and semaphore operations, then practice Banker's Algorithm and Resource Allocation Graphs for deadlock numericals.",
+      "key_points": [
+        "Race condition and critical section problem",
+        "Peterson's Solution",
+        "Mutex Locks",
+        "Semaphores (counting and binary)",
+        "Monitors",
+        "Classic problems: Producer-Consumer, Readers-Writers, Dining Philosophers",
+        "Necessary conditions: Mutual Exclusion, Hold & Wait, No Preemption, Circular Wait",
+        "Resource Allocation Graph",
+        "Deadlock Prevention vs Avoidance vs Detection",
+        "Banker's Algorithm (Safety Algorithm)",
+        "Deadlock Recovery",
+        "System Model"
+      ]
+    },
+    {
+      "name": "Memory Management: Paging, Segmentation & Swapping",
+      "importance": "high",
+      "weightage": "15-18%",
+      "priority": 3,
+      "summary": "Covers all non-virtual memory management techniques including paging, segmentation, and swapping. Address translation, TLB, and allocation strategies are core exam topics.",
+      "strategy": "Practice logical-to-physical address translation problems, understand TLB role, and review swapping and allocation strategies as supporting concepts.",
+      "key_points": [
+        "Logical vs Physical address space",
+        "Paging mechanism and page table",
+        "TLB (Translation Lookaside Buffer)",
+        "Contiguous Memory Allocation: First Fit, Best Fit, Worst Fit",
+        "Segmentation",
+        "Internal and External Fragmentation",
+        "Swapping mechanism",
+        "Contiguous allocation: Fixed and Variable partitions",
+        "Compaction",
+        "Base and Limit registers"
+      ]
+    },
+    {
+      "name": "Virtual Memory & Page Replacement",
+      "importance": "high",
+      "weightage": "12-16%",
+      "priority": 4,
+      "summary": "Allows processes to run without being fully loaded in memory using demand paging. Page replacement algorithms and thrashing are heavily tested numerically.",
+      "strategy": "Solve numerical problems on FIFO, LRU, and Optimal page replacement and understand Belady's anomaly.",
+      "key_points": [
+        "Demand Paging and valid-invalid bit",
+        "Page Fault handling",
+        "FIFO, Optimal, LRU, LRU Approximation algorithms",
+        "Belady's Anomaly",
+        "Thrashing and Working Set Model",
+        "Allocation of Frames"
+      ]
+    },
+    {
+      "name": "Multithreading & Multithreaded Programming",
+      "importance": "high",
+      "weightage": "8-10%",
+      "priority": 5,
+      "summary": "Threads are lightweight units of CPU execution within a process. Threading models and benefits over single-threaded processes are key exam concepts.",
+      "strategy": "Focus on threading models (many-to-one, one-to-one, many-to-many) and benefits of multithreading over multiprocessing.",
+      "key_points": [
+        "Thread vs Process",
+        "Benefits: Responsiveness, Resource Sharing, Economy, Scalability",
+        "Many-to-One, One-to-One, Many-to-Many models",
+        "User-level vs Kernel-level threads",
+        "Implicit Threading (Thread Pools, OpenMP)",
+        "Concurrency vs Parallelism"
+      ]
+    },
+    {
+      "name": "OS Structure, System Calls, Process Concept & IPC",
+      "importance": "medium",
+      "weightage": "7-10%",
+      "priority": 6,
+      "summary": "Covers OS organization, user-kernel interaction via system calls, process lifecycle, and IPC mechanisms. These foundational topics appear frequently in short-answer questions.",
+      "strategy": "Know OS structure models, types of system calls, process states with diagrams, and IPC mechanisms for short and descriptive questions.",
+      "key_points": [
+        "OS services and user interface",
+        "Types of System Calls: Process, File, Device, Info, Communication",
+        "Monolithic, Layered, Microkernel, Modular OS",
+        "Dual-mode operation (User vs Kernel mode)",
+        "OS operations and interrupts",
+        "Process states: New, Ready, Running, Waiting, Terminated",
+        "Process Control Block (PCB)",
+        "Context Switching",
+        "IPC: Shared Memory vs Message Passing",
+        "Process creation (fork) and termination",
+        "Cooperating vs Independent processes"
+      ]
+    },
+    {
+      "name": "File System & File System Implementation",
+      "importance": "medium",
+      "weightage": "7-9%",
+      "priority": 7,
+      "summary": "Defines how files are stored, organized, and accessed on disk. Allocation methods and free space management are frequently asked in exams.",
+      "strategy": "Understand file allocation methods with diagrams and compare directory structures for exam questions.",
+      "key_points": [
+        "File-System Structure and mounting",
+        "Directory Implementation: Linear list, Hash table",
+        "Allocation Methods: Contiguous, Linked, Indexed",
+        "Free Space Management: Bit vector, Linked list",
+        "File attributes, access methods, and protection",
+        "VFS (Virtual File System)"
+      ]
+    },
+    {
+      "name": "Disk Scheduling & System Protection",
+      "importance": "medium",
+      "weightage": "5-7%",
+      "priority": 8,
+      "summary": "Disk scheduling optimizes I/O request order to minimize head movement; system protection controls resource access via domains and access matrices.",
+      "strategy": "Practice disk scheduling numericals for head movement calculation and focus on the Access Matrix model and domain-based protection for theory questions.",
+      "key_points": [
+        "FCFS, SSTF, SCAN, C-SCAN, LOOK, C-LOOK",
+        "Seek time, Rotational latency, Transfer time",
+        "Access Latency calculation",
+        "Disk attachment and structure",
+        "Performance comparison of algorithms",
+        "Goals and Principles of Protection",
+        "Domain of Protection",
+        "Access Matrix",
+        "Implementation: Access Control Lists, Capability Lists",
+        "Role-Based Access Control (RBAC)"
+      ]
+    }
+  ]
+}

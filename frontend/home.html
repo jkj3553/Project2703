@@ -79,7 +79,7 @@
     <section class="tasks-section">
       <div class="section-header">
         <h2 class="section-title">ACTIVE PLANS</h2>
-        <button class="btn btn-primary" onclick="window.location.href='input.html'">+ NEW PLAN</button>
+        <button class="btn btn-primary" onclick="localStorage.removeItem('onset_edit_plan_id'); window.location.href='input.html'">+ NEW PLAN</button>
       </div>
 
       <!-- Empty State -->
@@ -87,7 +87,7 @@
         <div class="empty-icon">+</div>
         <div class="empty-text">NO ACTIVE PLANS</div>
         <p style="margin-top: 1rem; color: #888;">Create a plan to launch execution protocols.</p>
-        <button class="btn btn-black" onclick="window.location.href='input.html'" style="margin-top: 2rem;">CREATE PLAN</button>
+        <button class="btn btn-black" onclick="localStorage.removeItem('onset_edit_plan_id'); window.location.href='input.html'" style="margin-top: 2rem;">CREATE PLAN</button>
       </div>
 
       <!-- Active Task Grid -->

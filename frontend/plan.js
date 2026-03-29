@@ -6,7 +6,21 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   const urlParams = new URLSearchParams(window.location.search);
-  const planId = urlParams.get('id');
+  let planId = urlParams.get('id');
+
+  if (!planId) {
+    planId = localStorage.getItem('onset_active_plan_id');
+  }
+
+  if (!planId) {
+    alert("Plan ID missing! Redirecting to Dashboard.");
+    window.location.href = 'home.html';
+    return;
+  }
+
+  // Resecure it
+  localStorage.setItem('onset_active_plan_id', planId);
+
   const plan = window.OnsetApp.getPlanById(planId);
 
   if (!plan) {
@@ -20,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Set Rebalance Button Link
   document.querySelector('.btn-rebalance').addEventListener('click', () => {
+    localStorage.setItem('onset_edit_plan_id', plan.id);
     window.location.href = `input.html?editId=${plan.id}`;
   });
 
@@ -97,6 +112,17 @@ document.addEventListener('DOMContentLoaded', () => {
       updateProgress();
     });
   });
+
+  // ================= DYNAMIC EXECUTION GUIDE =================
+  const guideList = document.querySelector('.guide-list');
+  if (guideList && plan.executionGuide && Array.isArray(plan.executionGuide) && plan.executionGuide.length > 0) {
+    guideList.innerHTML = '';
+    plan.executionGuide.forEach(point => {
+      const li = document.createElement('li');
+      li.textContent = point.replace(/^- /, '').replace(/^\d+\.\s/, '').trim();
+      guideList.appendChild(li);
+    });
+  }
 
   updateProgress();
 

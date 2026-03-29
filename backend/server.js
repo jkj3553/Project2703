@@ -1,7 +1,9 @@
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const OpenAI = require('openai');
+const { getSubjectData } = require('./utils/getSubjectData');
+const planRoutes = require('./routes/planRoutes');
+const { generatePlan } = require('./services/aiService');
 
 dotenv.config();
 
@@ -17,60 +19,49 @@ app.get('/', (req, res) => {
   res.send('Onset Backend Engine is running! Use POST /generate-plan to interact.');
 });
 
-// Initialize OpenAI
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+
+
+// Mount the new plan router
+// It builds the prompt and attaches it to req.promptPayload.prompt
+app.use('/', planRoutes);
+
+
 
 /**
- * POST /generate-plan
- * Input JSON: { exam, days, topics, level, extra }
+ * POST /ask-doubt
+ * Input JSON: { subject, question }
  */
-app.post('/generate-plan', async (req, res) => {
+app.post('/ask-doubt', async (req, res) => {
   try {
-    const { exam, days, topics, level, extra } = req.body;
+    console.log('[AI SERVICE] Incoming request to /ask-doubt:', req.body);
+    
+    const { subject, question } = req.body;
 
-    if (!exam || !days || !topics) {
-      return res.status(400).json({ error: 'Missing required fields: exam, days, or topics' });
+    if (!subject || !question) {
+      return res.status(400).json({ error: 'Missing required fields: subject, question' });
     }
 
-    // AI Generation Logic based on consistency level
-    let intensity = 'balanced';
-    if (level === 'Inconsistent') intensity = 'starting light, increasing gradually';
-    else if (level === 'Highly Consistent') intensity = 'high intensity and maximum discipline';
+    const subjectData = getSubjectData(subject);
+    let contextBlock = '';
 
-    const prompt = `
-      You are an expert study planner AI. Generate a professional study plan for the following:
-      - Exam: ${exam}
-      - Duration: ${days} days
-      - Topics/Subjects: ${topics}
-      - Consistency Level: ${level} (${intensity})
-      - Additional Context: ${extra || 'None'}
+    if (subjectData && Array.isArray(subjectData.topics)) {
+      const topicSummaries = subjectData.topics.map(t => `- ${t.name}: ${t.summary}`).join('\\n');
+      contextBlock = `\\nUse this context if relevant:\\n${topicSummaries}\\n`;
+    }
 
-      REQUIREMENTS:
-      1. Provide a clear day-wise study plan.
-      2. Keep tasks short and actionable (one per line).
-      3. Include a short execution guide (4–5 lines) at the end.
-      4. Format the response as a clean plain-text string.
-    `;
+    const prompt = `You are an expert ${subject} tutor. Answer the student's question clearly and concisely.${contextBlock}
+    
+Student Question: ${question}`;
 
-    const completion = await openai.chat.completions.create({
-      model: 'gpt-3.5-turbo',
-      messages: [
-        { role: 'system', content: 'You are a helpful study plan generator.' },
-        { role: 'user', content: prompt }
-      ],
-      temperature: 0.7,
-    });
-
-    const planResponse = completion.choices[0].message.content;
+    const response = await generatePlan(prompt, `You are a helpful ${subject} tutor.`);
 
     res.json({
-      plan: planResponse
+      answer: response.text,
+      provider: response.providerUsed,
     });
 
   } catch (error) {
-    console.error('Error generating plan:', error);
+    console.error('Error answering doubt:', error);
     res.status(500).json({ error: `OpenAI Error: ${error.message}` });
   }
 });

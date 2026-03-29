@@ -48,10 +48,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 2. Auth Protection Logic
   const path = window.location.pathname;
-  if (!path.includes('login.html') && !path.includes('index.html') && !path.endsWith('/')) {
+  if (!path.includes('login') && !path.includes('index') && path !== '/') {
     const user = localStorage.getItem('onset_user');
     if (!user) {
-      window.location.href = 'login.html';
+      window.location.href = '/login.html';
     }
   }
 
@@ -75,6 +75,7 @@ window.OnsetApp = {
     localStorage.setItem('onset_plans', JSON.stringify(plans));
   },
   getPlanById: function(id) {
+    if (!id) return null;
     return this.getPlans().find(p => p.id === id.toString());
   },
   deletePlan: function(id) {

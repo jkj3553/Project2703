@@ -30,9 +30,19 @@
       
       <form class="onset-form" id="planForm">
         
-        <div class="form-group">
-          <label for="examName">Target Exam / Goal</label>
-          <input type="text" id="examName" class="brutalist-input" placeholder="e.g. JEE Advanced 2026, AWS Cert" required>
+        <div class="form-row">
+          <div class="form-group" style="flex: 1;">
+            <label for="subject">Subject</label>
+            <select id="subject" class="brutalist-input" required>
+              <option value="Operating Systems" selected>Operating Systems (OS)</option>
+            </select>
+            <span class="helper-text">Currently isolated to OS for high-fidelity testing.</span>
+          </div>
+
+          <div class="form-group" style="flex: 1;">
+            <label for="examName">Target Exam / Goal</label>
+            <input type="text" id="examName" class="brutalist-input" placeholder="e.g. OS Midterms, GATE CS" required>
+          </div>
         </div>
 
         <div class="form-row">
@@ -53,9 +63,23 @@
           </div>
         </div>
 
-        <div class="form-group">
-          <label for="weakAreas">Weak Areas</label>
-          <input type="text" id="weakAreas" class="brutalist-input" placeholder="e.g. Organic Chemistry, Calculus, Memorization" required>
+        <div class="form-row">
+          <div class="form-group" style="flex: 1;">
+            <label for="weakAreas">Weak Areas</label>
+            <input type="text" id="weakAreas" class="brutalist-input" placeholder="e.g. Deadlocks, Demand Paging" required>
+          </div>
+
+          <div class="form-group" style="flex: 1;">
+            <label for="syllabusCoverage">Syllabus Coverage</label>
+            <select id="syllabusCoverage" class="brutalist-input" required>
+              <option value="" disabled selected>Select coverage...</option>
+              <option value="0-25%">0–25% (Just starting)</option>
+              <option value="25-50%">25–50% (Basic understanding)</option>
+              <option value="50-75%">50–75% (Halfway there)</option>
+              <option value="75-100%">75–100% (Revision mode)</option>
+            </select>
+            <span class="helper-text">Helps AI decide between learning basics vs exam practice.</span>
+          </div>
         </div>
 
         <div class="form-group">
